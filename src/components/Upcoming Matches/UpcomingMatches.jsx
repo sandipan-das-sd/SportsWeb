@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 const UpcomingMatchesPage = () => {
   const ballBusters = [
@@ -186,8 +186,18 @@ const UpcomingMatchesPage = () => {
       <div className="mt-8">
         <h3 className="text-xl font-semibold mb-4 underline">What to Expect</h3>
         <p className="text-lg leading-relaxed">
-         <p>Ball Busters are quite favourites with complete domination on all teams keeping 100 percent win percent with In form Indra hitting balls at will and topping the charts.Captain has led from front with slow and steady knock and a solid contribution from rest of team in all depts. On the other hand,Roof top challengers have also revived their form after loosing heavily to Ball Busters in their first match.their captain KD is in top form and the team will expect him to fire in final also.The rest of the team will also be determined to pitch in and contribute to the teams performance.
-         Overall if rain doesnot play spoilsport let's hope for an interesting final and not a one sided one</p>
+         <p>Ball Busters are quite favourites with complete domination
+           on all teams keeping 100 percent win percent with In form 
+           Indra hitting balls at will and topping the charts.Captain has
+            led from front with slow and steady knock and a solid contribution
+             from rest of team in all depts. On the other hand,Roof top challengers 
+             have also revived their form after loosing heavily to Ball Busters in their first match.their
+              captain KD is in top form and the team will expect him to fire in 
+              final also.The rest of the team will also be determined to pitch in and 
+              contribute to the teams performance.
+         Overall if rain doesnot play spoilsport lets hope for 
+         an interesting final and not  a one slided one
+        </p>
         </p>
       </div>
     </div>
