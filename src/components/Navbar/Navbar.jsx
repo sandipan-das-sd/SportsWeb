@@ -148,7 +148,7 @@ const Navbar = () => {
           {/* Logo section */}
           <a
             target="_blank"
-            href="https://www.youtube.com/channel/UC1H-a1MKEFXRiFlGNLcy7gQ?sub_confirmation=1"
+            href="#"
             className="flex items-center gap-3"
           >
             <img src={Logo} alt="Logo" className="w-5" />
