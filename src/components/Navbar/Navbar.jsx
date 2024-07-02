@@ -100,6 +100,13 @@
 // export default Navbar;
 
 
+
+
+
+
+
+
+
 import  { useState } from "react";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
@@ -197,3 +204,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
