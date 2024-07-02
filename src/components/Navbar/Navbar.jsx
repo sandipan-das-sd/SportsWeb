@@ -99,7 +99,7 @@
 
 // export default Navbar;
 
-
+import React from "react";
 import  { useState } from "react";
 import { HiMenuAlt3, HiMenuAlt1 } from "react-icons/hi";
 import ResponsiveMenu from "./ResponsiveMenu";
