@@ -116,7 +116,7 @@ import DarkMode from "./DarkMode";
 export const MenuLinks = [
   {
     id: 1,
-    name: "Login",
+    name: "Loginnnnn",
     link: "/#login",
   },
   {
