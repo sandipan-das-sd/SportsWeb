@@ -31,10 +31,10 @@ const Sidebar = () => {
           <ul className="nav-list">
             {
               navigationLinks.map((navigationLink) => (
-                <li className="nav-item" key = { navigationLink.id }>
+                <li className="nav-item" key = { navigationLink.id } >
                   <a href="#" className={ `nav-link ${ navigationLink.id === activeLinkIdx ? 'active' : null }` }>
                       <img src={ navigationLink.image } className="nav-link-icon" alt = { navigationLink.title } />
-                      <span className="nav-link-text">{ navigationLink.title }</span>
+                      <span className="nav-link-text  text-teal-50">{ navigationLink.title }</span>
                   </a>
                 </li>
               ))
