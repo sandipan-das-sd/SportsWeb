@@ -1,11 +1,16 @@
+import './App.css';
+import Sidebar from './layout/Sidebar/Sidebar';
+import Content from './layout/Content/Content';
 
-import Navigation from "./Navigation"
-export default function AdminApp() {
+function AdminApp() {
   return (
-    <div>
-     {/* Navigation Bar */}
-    <Navigation/>
-     {/* Main Components */}
-    </div>
+    <>
+      <div className='app'>
+        <Sidebar />
+        <Content />
+      </div>
+    </>
   )
 }
+
+export default AdminApp
