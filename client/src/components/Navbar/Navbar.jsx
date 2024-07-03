@@ -117,12 +117,12 @@ export const MenuLinks = [
   {
     id: 1,
     name: "Login",
-    link: "/#login",
+    link: "/email",
   },
   {
     id: 2,
     name: "About",
-    link: "/#about",
+    link: "/about",
   },
   {
     id: 3,
