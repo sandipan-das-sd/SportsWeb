@@ -259,6 +259,8 @@ import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
 
+import { Toaster } from "react-hot-toast";
+
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -271,17 +273,21 @@ const App = () => {
   }, []);
 
   return (
+    <>
+    <Toaster/>
     <Router>
       <div className="bg-white dark:bg-black dark:text-white text-black overflow-x-hidden">
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
+           
             <Route path="/admin" element={<AdminApp />} />
           </Routes>
         </Layout>
       </div>
     </Router>
+    </>
   );
 };
 
