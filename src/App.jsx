@@ -84,6 +84,7 @@ import Footer from "./components/Footer/Footer";
 import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 
+
 const App = () => {
   useEffect(() => {
     AOS.init({
@@ -102,6 +103,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
+         
         </Routes>
         <Footer />
       </div>
