@@ -17,9 +17,9 @@ const Hero = () => {
               data-aos="slide-right"
               className="absolute -bottom-5 -right-8 px-4 py-2 rounded-xl bg-white dark:bg-gray-900 dark:text-white shadow-md"
             >
-              <p className="text-gray-500 text-sm ">⭐Projects</p>
+              <p className="text-gray-500 text-sm ">⭐Sports</p>
               <h1 className="font-bold">
-                600+ <span className="font-normal">Done</span>
+                100+ <span className="font-normal">Done</span>
               </h1>
             </div>
           </div>
@@ -32,13 +32,12 @@ const Hero = () => {
               style={{ lineHeight: 1.2 }}
             >
               Building Brands in the{" "}
-              <span className="text-primary">Tournament</span>
+              <span className="text-primary">Terrace Cup 5 Auction</span>
             </h1>
             <p data-aos="fade-up" data-aos-delay="300">
-              Your partner in navigating the ever-evolving landscape of digital
-              marketing. From conceptualization to execution, we craft tailored
-              solutions that drive results and elevate your brand to new
-              heights.
+            Join us in shaping the future of sports competitions. From 
+              training to tournaments, we provide the platform and support 
+              to elevate your teams performance and reputation.
             </p>
             <button
               data-aos="fade-up"
