@@ -109,14 +109,14 @@
 
 
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Toaster, toast } from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+
 // Component imports
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -133,7 +133,7 @@ import UserDetails from "./Authentication/UserDetails";
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     AOS.init({
@@ -148,7 +148,7 @@ const App = () => {
       try {
         const token = localStorage.getItem('token');
         if (!token) {
-          navigate('/login');
+          setLoading(false);
           return;
         }
 
@@ -160,6 +160,7 @@ const App = () => {
 
         const userData = response.data.data;
         setUser(userData);
+        setLoading(false);
 
         // Store user details in local storage
         localStorage.setItem('user', JSON.stringify(userData));
@@ -173,16 +174,21 @@ const App = () => {
           localStorage.removeItem('token');
           Cookies.remove('user');
           toast.error("Session expired. Please login again.");
-          navigate("/login");
+          setLoading(false);
         } else {
           // Handle other errors
           toast.error("An error occurred. Please try again.");
+          setLoading(false);
         }
       }
     };
 
     fetchUserDetails();
-  }, [navigate]);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Display loading message while fetching user details
+  }
 
   const isAdmin = user?.isAdmin;
 
@@ -198,6 +204,7 @@ const App = () => {
               <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/login" />} />
               <Route path="/email" element={<CheckEmail />} />
               <Route path="/details" element={<UserDetails />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Layout>
         </div>
@@ -259,7 +266,3 @@ const UpcomingMatchesPage = () => {
 };
 
 export default App;
-
-
-
-
