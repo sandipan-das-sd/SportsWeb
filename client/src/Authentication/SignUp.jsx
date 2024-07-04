@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import uploadFiles from "./../helpers/uploadFiles";
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -8,8 +9,10 @@ export default function SignUp() {
     password: '',
     confirmPassword: '',
     mobile: '',
-    photo: null
+    photo: null,
+    photoUrl: ''
   });
+  const [photoUploadMessage, setPhotoUploadMessage] = useState('');
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -17,6 +20,27 @@ export default function SignUp() {
       ...prev,
       [name]: files ? files[0] : value
     }));
+  };
+
+  const handlePhotoUpload = async () => {
+    if (formData.photo) {
+      const uploadResponse = await uploadFiles(formData.photo);
+      setFormData((prev) => ({
+        ...prev,
+        photoUrl: uploadResponse.secure_url
+      }));
+      setPhotoUploadMessage('Photo uploaded successfully');
+      toast.success('Photo uploaded successfully');
+    }
+  };
+
+  const handleClearPhoto = () => {
+    setFormData((prev) => ({
+      ...prev,
+      photo: null,
+      photoUrl: ''
+    }));
+    setPhotoUploadMessage('');
   };
 
   const handleSubmit = async (e) => {
@@ -27,13 +51,11 @@ export default function SignUp() {
       return;
     }
 
-    try {
-      let photoUrl = '';
-      if (formData.photo) {
-        const uploadResponse = await uploadFiles(formData.photo);
-        photoUrl = uploadResponse.secure_url;
-      }
+    if (formData.photo && !formData.photoUrl) {
+      await handlePhotoUpload();
+    }
 
+    try {
       const response = await fetch('https://sports-web-server.vercel.app/api/register', {
         method: 'POST',
         headers: {
@@ -44,7 +66,7 @@ export default function SignUp() {
           email: formData.email,
           password: formData.password,
           mobile: formData.mobile,
-          photo: photoUrl
+          photo: formData.photoUrl
         })
       });
 
@@ -63,6 +85,7 @@ export default function SignUp() {
 
   return (
     <div>
+      <Toaster />
       <div className="p-10">
         <h1 className="mb-8 font-extrabold text-4xl">Register</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -144,6 +167,18 @@ export default function SignUp() {
                 name="photo"
                 onChange={handleChange}
               />
+              {formData.photo && (
+                <div className="mt-2 flex items-center">
+                  <span className="text-sm">{formData.photo.name}</span>
+                  <button
+                    type="button"
+                    onClick={handleClearPhoto}
+                    className="ml-2 text-red-500"
+                  >
+                    &#x2716;
+                  </button>
+                </div>
+              )}
             </div>
 
             <div className="flex items-center justify-between mt-8">
