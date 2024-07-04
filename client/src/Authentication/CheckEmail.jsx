@@ -2,13 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {toast} from 'react-hot-toast'
-
+import { useNavigate } from "react-router-dom";
 export default function CheckEmail() {
   const [data, setData] = useState({
     email: "",
     password: ""
   });
-
+const navigate=useNavigate()
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setData((prevData) => ({
@@ -17,27 +17,44 @@ export default function CheckEmail() {
     }));
   };
 
+  
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   try {
-  //     const Response = await axios.post("http://localhost:5800/api/login", {
+  //     const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
   //       email: data.email,
-  //       password:data.password
+  //       password: data.password
   //     }, { withCredentials: true });
-  //     if(Response.data.success==true)
-  //     {
-  //       toast.success(Response.data.message)
+  
+  //     if (response.data.success) {
+  //       // Save token to localStorage
+  //       localStorage.setItem('token', response.data.token);
+  
+  //       // Show success message using toast
+  //       toast.success(response.data.message);
+  //       navigate('/upcoming-matches');
+  //       if(Response.data.email=="bpratik16@gmail.com" && Response.data.password=="admin@123")
+  //       {
+  //         toast.success("Welcome to Admnin");
+  //         navigate('/admin')
+  //       }
+        
+        
+  //     } else {
+  //       toast.error(response.data.message || "An error occurred");
   //     }
-  //     console.log(Response.data)
-     
+  
+  //     console.log(response.data);
+      
   //     // Handle successful responses here
   //   } catch (error) {
   //     // Handle errors here
-  //     toast.error(Response.data.message||"An Errror Occurred");
-      
+  //     toast.error(error.response.data.message || "An error occurred");
+  
   //     console.error("There was an error!", error);
   //   }
   // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -52,6 +69,14 @@ export default function CheckEmail() {
   
         // Show success message using toast
         toast.success(response.data.message);
+  
+        // Redirect based on user type
+        if (response.data.user.email === "bpratik16@gmail.com" && response.data.user.password === "admin@123") {
+          toast.success("Welcome, Admin!");
+          navigate('/admin');
+        } else {
+          navigate('/upcoming-matches');
+        }
       } else {
         toast.error(response.data.message || "An error occurred");
       }
@@ -66,6 +91,7 @@ export default function CheckEmail() {
       console.error("There was an error!", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
