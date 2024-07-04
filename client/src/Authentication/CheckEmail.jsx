@@ -229,6 +229,7 @@ export default function CheckEmail() {
           console.log("Navigating to /admin");
          
           // Navigate to /admin if the user is an admin
+          toast.success("Welcome to Debtilok Mukherjee")
           navigate('/admin');
         } else {
           console.log("Navigating to /details");
