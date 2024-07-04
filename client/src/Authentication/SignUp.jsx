@@ -211,10 +211,11 @@ export default function SignUp() {
                 Register
               </button>
               <Link to="/email" className="font-semibold">
-                Already registered?<span className='text-primary mr-2'>Login</span>
+                Already registered?<span className='text-primary mr-2'>Login</span>    
               </Link>
             </div>
           </form>
+          
 
           <aside className="">
             <div className="bg-gray-100 p-8 rounded">
