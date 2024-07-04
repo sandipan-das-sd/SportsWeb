@@ -25,6 +25,18 @@ export default function SignUp() {
                 <label className="block font-semibold" htmlFor="password">Password</label>
                 <input className=" w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="password" type="password" name="password" required="required" autoComplete="new-password"/>
             </div>
+            <div className="mt-4">
+                <label className="block font-semibold" htmlFor="password"> Confirm Password</label>
+                <input className=" w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="password" type="password" name="password" required="required" autoComplete="new-password"/>
+            </div>
+            <div className="mt-4">
+                <label className="block font-semibold" htmlFor="password">Phone Number</label>
+                <input className=" w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="password" type="password" name="password" required="required" autoComplete="new-password"/>
+            </div>
+            <div className="mt-4">
+                <label className="block font-semibold" htmlFor="password">Upload Photo</label>
+                <input  className=" w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1 w-full" id="password" type="file" name="photo" required="required" autoComplete="new-password"/>
+            </div>
 
             <div className="flex items-center justify-between mt-8">
                 <button type="submit" className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Register</button>
