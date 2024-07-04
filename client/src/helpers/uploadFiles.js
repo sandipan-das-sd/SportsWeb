@@ -1,4 +1,4 @@
-const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/auto/upload`;
+const url = `https://api.cloudinary.com/v1_1/dlwi5at62/auto/upload`;
 
 const uploadFiles = async (file) => {
   const formData = new FormData();
