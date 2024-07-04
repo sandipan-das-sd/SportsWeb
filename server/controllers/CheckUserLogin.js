@@ -95,7 +95,7 @@ const userLogin = async (req, res) => {
       });
     }
 
-    const isPasswordValid = await bcryptjs.compare(password, user.password);
+    const isPasswordValid =  bcryptjs.compare(password, user.password);
 
     if (!isPasswordValid) {
       return res.status(400).json({
