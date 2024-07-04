@@ -73,6 +73,7 @@ const navigate=useNavigate()
         // Redirect based on user type
         if (response.data.user.email === "debadmin@gmail.com" && response.data.user.password === "debadmin$2024") {
           toast.success(Response.data.message);
+          console.log(Response.data)
           navigate('/admin');
         } else {
           navigate('/upcoming-matches');
