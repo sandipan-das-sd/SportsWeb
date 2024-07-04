@@ -1,14 +1,12 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { logout } from "../redux/userSlice";
+import Cookies from "js-cookie"; // Import js-cookie
 import { toast } from "react-hot-toast";
 
 export default function UserDetails() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -22,12 +20,19 @@ export default function UserDetails() {
 
         console.log(response.data);
         setUser(response.data.data); // Update state with user details
+
+        // Store user details in local storage
+        localStorage.setItem('user', JSON.stringify(response.data.data));
+
+        // Store user details in cookies
+        Cookies.set('user', JSON.stringify(response.data.data), { expires: 7 }); // Expires in 7 days
+
       } catch (error) {
         console.error("Error fetching user details:", error);
         if (error.response && error.response.status === 401) {
           // Handle session expired
           localStorage.removeItem('token');
-          dispatch(logout());
+          Cookies.remove('user');
           toast.error("Session expired. Please login again.");
           navigate("/login");
         } else {
@@ -38,7 +43,7 @@ export default function UserDetails() {
     };
 
     fetchUserDetails();
-  }, [navigate, dispatch]);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8">
