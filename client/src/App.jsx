@@ -187,7 +187,7 @@ const App = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Display loading message while fetching user details
+    return <div className="">Loading...</div>; // Display loading message while fetching user details
   }
 
   const isAdmin = user?.isAdmin;
@@ -201,7 +201,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
-              <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/login" />} />
+              <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/email" />} />
               <Route path="/email" element={<CheckEmail />} />
               <Route path="/details" element={<UserDetails />} />
               <Route path="*" element={<Navigate to="/" />} />
