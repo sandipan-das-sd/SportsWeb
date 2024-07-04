@@ -18,42 +18,7 @@ const navigate=useNavigate()
   };
 
   
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
-  //       email: data.email,
-  //       password: data.password
-  //     }, { withCredentials: true });
-  
-  //     if (response.data.success) {
-  //       // Save token to localStorage
-  //       localStorage.setItem('token', response.data.token);
-  
-  //       // Show success message using toast
-  //       toast.success(response.data.message);
-  //       navigate('/upcoming-matches');
-  //       if(Response.data.email=="bpratik16@gmail.com" && Response.data.password=="admin@123")
-  //       {
-  //         toast.success("Welcome to Admnin");
-  //         navigate('/admin')
-  //       }
-        
-        
-  //     } else {
-  //       toast.error(response.data.message || "An error occurred");
-  //     }
-  
-  //     console.log(response.data);
-      
-  //     // Handle successful responses here
-  //   } catch (error) {
-  //     // Handle errors here
-  //     toast.error(error.response.data.message || "An error occurred");
-  
-  //     console.error("There was an error!", error);
-  //   }
-  // };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +27,7 @@ const navigate=useNavigate()
         email: data.email,
         password: data.password
       }, { withCredentials: true });
+      console.log(response.data);
   
       if (response.data.success) {
         // Save token to localStorage
@@ -72,9 +38,10 @@ const navigate=useNavigate()
   
         // Redirect based on user type
         if (response.data.user.email === "debadmin@gmail.com" && response.data.user.password === "debadmin$2024") {
-          toast.success(Response.data.message);
-          console.log(Response.data)
           navigate('/admin');
+          toast.success(response.data.message);
+        
+         
         } else {
           navigate('/upcoming-matches');
         }

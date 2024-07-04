@@ -71,6 +71,8 @@
 // };
 
 // module.exports = userLogin;
+
+
 const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
 const RegistrationModel = require('../ConnectDB/Model/Registration');
