@@ -120,8 +120,8 @@ const userLogin = async (req, res) => {
     if (email === 'debadmin@gmail.com' && password === 'debadmin$2024') {
       // Hardcoded admin credentials - replace with secure management if used in production
       user = {
-        _id: 'admin_id_here', // Replace with actual admin ID if available
-        name: 'Deb Admin',    // Replace with actual admin name
+        _id: '668641a21232ce4b83c9c0a6', // Replace with actual admin ID if available
+        name: 'Deb TiLok Mukherjee',    
         email: 'debadmin@gmail.com',
         // Add other admin details as needed
       };
