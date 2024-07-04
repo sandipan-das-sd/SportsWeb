@@ -256,7 +256,7 @@ export default function CheckEmail() {
         </h2>
         <p className="mt-2 text-center text-xl text-gray-600 max-w">
           Or{" "}
-          <Link to="#" className="font-medium text-primary hover:text-blue-500">
+          <Link to="/signup" className="font-medium text-primary hover:text-blue-500">
             <strong>create an account</strong>
           </Link>
         </p>

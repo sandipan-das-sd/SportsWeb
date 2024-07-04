@@ -296,6 +296,7 @@ import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
 import CheckEmail from "./Authentication/CheckEmail";
 import UserDetails from "./Authentication/UserDetails";
+import SignUp from "./Authentication/SignUp";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -377,6 +378,7 @@ const App = () => {
               <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/email" />} />
               <Route path="/email" element={<CheckEmail />} />
               <Route path="/details" element={<UserDetails />} />
+              <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </Layout>
