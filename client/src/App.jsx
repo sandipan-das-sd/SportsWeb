@@ -152,7 +152,7 @@ const App = () => {
 
   const fetchUserDetails = async (token) => {
     try {
-      const response = await axios.get("http://localhost:5800/user-details", {
+      const response = await axios.get("https://sports-web-server.vercel.app/user-details", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
