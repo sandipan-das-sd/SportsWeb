@@ -153,6 +153,20 @@ export default function SignUp() {
             </div>
 
             <div className="mt-4">
+              <label className="block font-semibold" htmlFor="confirmPassword">Phone</label>
+              <input
+                className="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1"
+                id="mobile"
+                type="password"
+                name="mobile"
+                required
+                
+                value={formData.mobile}
+                onChange={handleChange}
+              />
+            </div>
+
+            {/* <div className="mt-4">
               <label className="block font-semibold" htmlFor="mobile">Phone Number</label>
               <input
                 className="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1"
@@ -163,7 +177,7 @@ export default function SignUp() {
                 value={formData.mobile}
                 onChange={handleChange}
               />
-            </div>
+            </div> */}
 
             <div className="mt-4">
               <label className="block font-semibold" htmlFor="photo">Upload Photo</label>
@@ -197,7 +211,7 @@ export default function SignUp() {
                 Register
               </button>
               <Link to="/email" className="font-semibold">
-                Already registered?<span className='text-primary'>Login</span>
+                Already registered?<span className='text-primary mr-2'>Login</span>
               </Link>
             </div>
           </form>
