@@ -109,7 +109,7 @@
 
 
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -134,6 +134,7 @@ import UserDetails from "./Authentication/UserDetails";
 const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({
@@ -175,6 +176,7 @@ const App = () => {
           Cookies.remove('user');
           toast.error("Session expired. Please login again.");
           setLoading(false);
+          navigate('/email'); // Redirect to login
         } else {
           // Handle other errors
           toast.error("An error occurred. Please try again.");
@@ -184,10 +186,14 @@ const App = () => {
     };
 
     fetchUserDetails();
-  }, []);
+  }, [navigate]);
 
   if (loading) {
-    return <div className="">Loading...</div>; // Display loading message while fetching user details
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full text-blue-500"></div>
+      </div>
+    );
   }
 
   const isAdmin = user?.isAdmin;
