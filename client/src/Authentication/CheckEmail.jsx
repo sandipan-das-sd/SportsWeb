@@ -255,7 +255,7 @@ export default function CheckEmail() {
         </h2>
         <p className="mt-2 text-center text-xl text-gray-600 max-w">
           Or{" "}
-          <Link to="#" className="font-medium text-blue-600 hover:text-blue-500">
+          <Link to="#" className="font-medium text-primary hover:text-blue-500">
             <strong>create an account</strong>
           </Link>
         </p>
@@ -308,7 +308,7 @@ export default function CheckEmail() {
                   id="remember_me"
                   name="remember_me"
                   type="checkbox"
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-primary focus:ring-indigo-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember_me" className="ml-2 block text-sm text-gray-900">
                   Remember me
@@ -316,7 +316,7 @@ export default function CheckEmail() {
               </div>
 
               <div className="text-sm">
-                <Link to="#" className="font-medium text-blue-600 hover:text-blue-500">
+                <Link to="#" className="font-medium text-primary hover:text-blue-500">
                   Forgot your password?
                 </Link>
               </div>
@@ -325,7 +325,7 @@ export default function CheckEmail() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
                 Sign in
               </button>
