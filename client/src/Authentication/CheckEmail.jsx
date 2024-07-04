@@ -28,6 +28,7 @@ const navigate=useNavigate()
         email: data.email,
         password: data.password
       }, { withCredentials: true });
+      
       console.log(response.data);
   
       if (response.data.success) {
@@ -38,26 +39,19 @@ const navigate=useNavigate()
         toast.success(response.data.message);
   
         // Redirect based on user type
-        if (response.data.user.email === "debadmin@gmail.com" && response.data.user.password === "debadmin$2024") {
-          
-          toast.success(response.data.message);
+        if (response.data.user.email === "debadmin@gmail.com") {
+          // Navigate to /admin if the user is an admin
           navigate('/admin');
-        
-         
         } else {
+          // Navigate to /details for regular users
           navigate('/details');
         }
       } else {
         toast.error(response.data.message || "An error occurred");
       }
-  
-      console.log(response.data);
-      
-      // Handle successful responses here
     } catch (error) {
       // Handle errors here
-      toast.error(error.response.data.message || "An error occurred");
-  
+      toast.error(error.response?.data?.message || "An error occurred");
       console.error("There was an error!", error);
     }
   };
