@@ -137,6 +137,7 @@ const userLogin = async (req, res) => {
           email: user.email,
           // Add other admin details as needed
         },
+        isAdmin: true, // Indicate that this is an admin login
         success: true,
       });
     }
@@ -152,6 +153,7 @@ const userLogin = async (req, res) => {
         mobile: user.mobile,
         photo: user.photo
       },
+      isAdmin: false,
       success: true,
     });
 
