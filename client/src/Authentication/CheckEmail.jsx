@@ -240,7 +240,7 @@ export default function CheckEmail() {
         if (response.data.user.email === "debadmin@gmail.com" && response.data.user.password === "debadmin$2024") {
           navigate('/admin');
         } else {
-          navigate('/upcoming-matches');
+          navigate('/details');
         }
       } else {
         toast.error(response.data.message || "An error occurred");

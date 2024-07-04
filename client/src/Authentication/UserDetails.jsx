@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import  { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -6,6 +6,7 @@ import { logout } from "../redux/userSlice";
 import { toast } from "react-hot-toast";
 
 export default function UserDetails() {
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ export default function UserDetails() {
         });
 
         console.log(response.data);
-        // Display user details or update state as needed
+        setUser(response.data.data); // Update state with user details
       } catch (error) {
         console.error("Error fetching user details:", error);
         if (error.response && error.response.status === 401) {
@@ -40,8 +41,33 @@ export default function UserDetails() {
   }, [navigate, dispatch]);
 
   return (
-    <div>
-      {/* Render user details here */}
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 p-10 bg-white rounded-xl shadow-lg z-10">
+        <div className="text-center">
+          <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
+            User Details
+          </h2>
+        </div>
+        {user ? (
+          <div className="mt-8 space-y-6">
+            <div className="flex flex-col space-y-4">
+              <div className="flex flex-col items-start">
+                <label className="text-gray-600 font-medium">User ID:</label>
+                <p className="text-gray-800">{user.id}</p>
+              </div>
+              <div className="flex flex-col items-start">
+                <label className="text-gray-600 font-medium">Email:</label>
+                <p className="text-gray-800">{user.email}</p>
+              </div>
+              {/* Add more fields as needed */}
+            </div>
+          </div>
+        ) : (
+          <div className="mt-8 space-y-6">
+            <p>Loading user details...</p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
