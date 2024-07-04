@@ -227,7 +227,7 @@ export default function CheckEmail() {
         // Redirect based on user type
         if (response.data.admin && response.data.admin.email === "debadmin@gmail.com") {
           console.log("Navigating to /admin");
-          toast.success("Navigating to Admin Page"); // Debugging toast
+         
           // Navigate to /admin if the user is an admin
           navigate('/admin');
         } else {
