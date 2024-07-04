@@ -65,9 +65,10 @@ const Footer = () => {
               Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
               consectetur adipisicing elit consectetur adipisicing elit ipsum
               dolor sit amet consectetur. adipisicing{" "}
-            </p>
+            </p>   
             <br />
             {/* Social Handle */}
+            
             <div className="flex items-center gap-4 mt-6">
               <a href="#">
                 <FaInstagram className="text-2xl hover:text-primary duration-300" />
