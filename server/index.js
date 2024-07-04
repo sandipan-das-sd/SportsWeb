@@ -10,7 +10,7 @@ dotenv.config();
 
 // Update CORS configuration
 app.use(cors({
-    origin: "http://localhost:5173", // explicitly allow your client origin
+    origin: "https://sports-client-nine.vercel.app", // explicitly allow your client origin
     methods: "PUT,PATCH,DELETE,GET,POST",
     credentials: true // allow credentials to be sent
 }));

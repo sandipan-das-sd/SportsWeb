@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {toast} from 'react-hot-toast'
 
 export default function CheckEmail() {
   const [data, setData] = useState({
@@ -16,17 +17,52 @@ export default function CheckEmail() {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const Response = await axios.post("http://localhost:5800/api/login", {
+  //       email: data.email,
+  //       password:data.password
+  //     }, { withCredentials: true });
+  //     if(Response.data.success==true)
+  //     {
+  //       toast.success(Response.data.message)
+  //     }
+  //     console.log(Response.data)
+     
+  //     // Handle successful responses here
+  //   } catch (error) {
+  //     // Handle errors here
+  //     toast.error(Response.data.message||"An Errror Occurred");
+      
+  //     console.error("There was an error!", error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const Response = await axios.post("http://localhost:5800/api/login", {
+      const response = await axios.post("http://localhost:5800/api/login", {
         email: data.email,
-        password:data.password
+        password: data.password
       }, { withCredentials: true });
-     
+  
+      if (response.data.success) {
+        // Save token to localStorage
+        localStorage.setItem('token', response.data.token);
+  
+        // Show success message using toast
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.message || "An error occurred");
+      }
+  
+      console.log(response.data);
+      
       // Handle successful responses here
     } catch (error) {
       // Handle errors here
+      toast.error(error.response.data.message || "An error occurred");
+  
       console.error("There was an error!", error);
     }
   };
