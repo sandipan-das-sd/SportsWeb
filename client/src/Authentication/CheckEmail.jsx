@@ -214,18 +214,18 @@ export default function CheckEmail() {
         email: data.email,
         password: data.password
       }, { withCredentials: true });
-
+  
       console.log(response.data);
-
+  
       if (response.data.success) {
         // Save token to localStorage
         localStorage.setItem('token', response.data.token);
-
+  
         // Show success message using toast
         toast.success(response.data.message);
-
+  
         // Redirect based on user type
-        if (response.data.user.email === "debadmin@gmail.com") {
+        if (response.data.admin && response.data.admin.email === "debadmin@gmail.com") {
           console.log("Navigating to /admin");
           toast.success("Navigating to Admin Page"); // Debugging toast
           // Navigate to /admin if the user is an admin
@@ -245,6 +245,7 @@ export default function CheckEmail() {
       console.error("There was an error!", error);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
