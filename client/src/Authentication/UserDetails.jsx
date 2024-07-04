@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"; // Import js-cookie
+import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
 
 export default function UserDetails() {
@@ -12,20 +12,30 @@ export default function UserDetails() {
     const fetchUserDetails = async () => {
       try {
         const token = localStorage.getItem('token');
+        if (!token) {
+          navigate('/email');
+          return;
+        }
+
         const response = await axios.get("https://sports-web-server.vercel.app/api/user-details", {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
 
-        console.log(response.data);
-        setUser(response.data.data); // Update state with user details
+        const userData = response.data.data;
+        setUser(userData);
 
         // Store user details in local storage
-        localStorage.setItem('user', JSON.stringify(response.data.data));
+        localStorage.setItem('user', JSON.stringify(userData));
 
         // Store user details in cookies
-        Cookies.set('user', JSON.stringify(response.data.data), { expires: 7 }); // Expires in 7 days
+        Cookies.set('user', JSON.stringify(userData), { expires: 7 });
+        
+        // Redirect to admin if user is admin
+        if (userData.isAdmin) {
+          navigate('/admin');
+        }
 
       } catch (error) {
         console.error("Error fetching user details:", error);
@@ -34,7 +44,7 @@ export default function UserDetails() {
           localStorage.removeItem('token');
           Cookies.remove('user');
           toast.error("Session expired. Please login again.");
-          navigate("/login");
+          navigate("/email");
         } else {
           // Handle other errors
           toast.error("An error occurred. Please try again.");
