@@ -9,7 +9,7 @@ async function getUserDetailsFromToken(token) {
     const user = {
       id: decoded.id,
       email: decoded.email,
-      // Add more fields as needed
+     
     };
 
     return user;

@@ -18,6 +18,7 @@ import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
 import CheckEmail from "./Authentication/CheckEmail";
+import UserDetails from "./Authentication/UserDetails";
 
 import { Toaster } from "react-hot-toast";
 
@@ -43,6 +44,7 @@ const App = () => {
               <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
               <Route path="/admin" element={<AdminApp />} />
               <Route path="/email" element={<CheckEmail />} />
+              <Route path="/details" element={<UserDetails />} />
             </Routes>
           </Layout>
         </div>
