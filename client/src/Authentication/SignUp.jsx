@@ -155,7 +155,7 @@ export default function SignUp() {
             <div className="mt-4">
               <label className="block font-semibold" htmlFor="mobile">Phone Number</label>
               <input
-                className="w-full shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1"
+                className="w-10 shadow-inner bg-gray-100 rounded-lg placeholder-black text-2xl p-4 border-none block mt-1"
                 id="mobile"
                 type="text"
                 name="mobile"
