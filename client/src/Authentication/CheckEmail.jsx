@@ -232,7 +232,7 @@ export default function CheckEmail() {
           navigate('/admin');
         } else {
           console.log("Navigating to /details");
-          toast.success("Navigating to Details Page"); // Debugging toast
+         
           // Navigate to /details for regular users
           navigate('/details');
         }
