@@ -1,11 +1,10 @@
-import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
+
 
 
 export default function SignUp() {
   return (
     <>
-    <Navbar/>
+   
     <div>
      <div className="p-10">
     <h1 className="mb-8 font-extrabold text-4xl">Register</h1>
@@ -49,7 +48,7 @@ export default function SignUp() {
     </div>
 </div>
     </div>
-    <Footer/>
+
     </>
   )
 }
