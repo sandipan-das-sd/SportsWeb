@@ -227,31 +227,54 @@ export default function UserDetails() {
             </button>
           </div>
 
-          {/* Sidebar menu */}
-          <nav>
-            <ul className="space-y-4">
-              <li>
-                <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Upcoming Matches details will be added soon.")}>
-                  Upcoming Matches
-                </button>
-              </li>
-              <li>
-                <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Payment Status: Approved by Admin.")}>
-                  Payment Status
-                </button>
-              </li>
-              <li>
-                <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Score Details will be added soon.")}>
-                  Score Details
-                </button>
-              </li>
-              <li>
-                <button className="text-red-500 hover:text-red-600 focus:outline-none" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
-            </ul>
-          </nav>
+      
+<div className={`fixed top-0 left-0 h-full bg-white z-50 shadow-lg w-64 overflow-y-auto transition-transform duration-300 transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
+  <div className="py-4 px-6">
+    {/* Sidebar header */}
+    <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center space-x-4">
+        <img src={user?.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
+        <h2 className="text-xl font-semibold text-gray-800">{user?.fullname}</h2>
+      </div>
+      <button className="text-gray-500 focus:outline-none" onClick={toggleSidebar}>
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          {showSidebar ? (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          ) : (
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          )}
+        </svg>
+      </button>
+    </div>
+
+    {/* Sidebar menu */}
+    <nav>
+      <ul className="space-y-4">
+        <li>
+          <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Upcoming Matches details will be added soon.")}>
+            Upcoming Matches
+          </button>
+        </li>
+        <li>
+          <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Payment Status: Approved by Admin.")}>
+            Payment Status
+          </button>
+        </li>
+        <li>
+          <button className="text-gray-800 hover:text-indigo-600 focus:outline-none" onClick={() => alert("Score Details will be added soon.")}>
+            Score Details
+          </button>
+        </li>
+        <li>
+          <button className="text-red-500 hover:text-red-600 focus:outline-none" onClick={handleLogout}>
+            Logout
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
         </div>
       </div>
 
