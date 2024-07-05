@@ -207,6 +207,11 @@ export default function UserDetails() {
 
   return (
     <div className="min-h-screen bg-gray-100 flex">
+      {/* Alert for under construction */}
+      <div className="fixed top-0 left-0 w-full bg-yellow-500 text-center p-2">
+        <p className="text-white font-semibold">This page is under construction. Please wait for updates.</p>
+      </div>
+
       {/* Sidebar */}
       <div className={`fixed top-0 left-0 h-full bg-white z-50 shadow-lg w-64 overflow-y-auto transition-transform duration-300 transform ${showSidebar ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="py-4 px-6">
@@ -214,7 +219,7 @@ export default function UserDetails() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <img src={user?.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
-              <h2 className="text-xl font-semibold text-gray-800">{user?.name}</h2>
+              <h2 className="text-xl font-semibold text-gray-800">{user?.fullname}</h2>
             </div>
             <button className="text-gray-500 focus:outline-none" onClick={toggleSidebar}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -261,40 +266,76 @@ export default function UserDetails() {
           {/* Main content goes here */}
           <h2 className="text-3xl font-semibold text-gray-800">User Dashboard</h2>
           <p className="mt-4 text-gray-600">Welcome to your dashboard, <span className="font-bold">{user?.name}!</span></p>
-          {/* Add more content as needed */}
-          <div className="flex flex-col space-y-6 mt-8">
-            <div>
-              <p className="text-gray-600 font-medium">User ID:</p>
-              <p className="text-gray-800">{user?.id}</p>
+          
+          {/* User Details */}
+          {user && (
+            <div className="mt-6">
+              <div className="space-y-4">
+                <div>
+                  <p className="text-gray-600 font-medium">User ID:</p>
+                  <p className="text-gray-800">{user.id}</p>
+                </div>
+                <div>
+                  <p className="text-gray-600 font-medium">Email:</p>
+                  <p className="text-gray-800">{user.email}</p>
+                </div>
+                <div>
+                  <p className="text-gray-600 font-medium">Phone:</p>
+                  <p className="text-gray-800">{user.mobile}</p>
+                </div>
+                <div>
+                  <p className="text-gray-600 font-medium">Photo:</p>
+                  <img src={user.photo} alt="User Photo" className="w-20 h-20 rounded-full" />
+                </div>
+              </div>
+
+              {/* Scheduled Match Details */}
+              <div className="mt-8">
+                <h3 className="text-xl font-semibold text-gray-800">Scheduled Match</h3>
+                <div className="mt-4">
+                  <p className="text-gray-600 font-medium">Tournament:</p>
+                  <p className="text-gray-800">Terrace Cup 8 Final</p>
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Venue:</p>
+                  <p className="text-gray-800">Tiger Turf</p>
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Time:</p>
+                  <p className="text-gray-800">11 am - 1 pm</p>
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Weather Condition:</p>
+                  <p className="text-gray-800">50% chances of rain/light drizzle, Overcast</p>
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Pitch Condition:</p>
+                  <p className="text-gray-800">Slow</p>
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Payment Status:</p>
+                  <p className="text-green-600">Paid</p> {/* Example - Replace with dynamic data */}
+                </div>
+                <div className="mt-2">
+                  <p className="text-gray-600 font-medium">Score Details:</p>
+                  <p className="text-gray-800">To be updated</p> {/* Example - Replace with dynamic data */}
+                </div>
+              </div>
             </div>
-            <div>
-              <p className="text-gray-600 font-medium">Email:</p>
-              <p className="text-gray-800">{user?.email}</p>
+          )}
+
+          {/* Loader or Placeholder */}
+          {!user && (
+            <div className="mt-8 space-y-6">
+              <button type="button" className="bg-indigo-500 text-white py-2 px-4 rounded-md" disabled>
+                <svg className="animate-spin h-5 w-5 mr-3 text-white" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                </svg>
+                Loading...
+              </button>
             </div>
-            <div>
-              <p className="text-gray-600 font-medium">Phone:</p>
-              <p className="text-gray-800">{user?.mobile}</p>
-            </div>
-            <div>
-              <p className="text-gray-600 font-medium">Photo:</p>
-              <img src={user?.photo} alt="User Photo" className="w-20 h-20 rounded-full" />
-            </div>
-            <div>
-              <p className="text-gray-600 font-medium">Upcoming Matches:</p>
-              <p className="text-gray-800">Details will be added soon.</p>
-            </div>
-            <div>
-              <p className="text-gray-600 font-medium">Payment Status:</p>
-              <p className="text-gray-800"><span className="bg-green-600 px-2 py-1 rounded-md text-white">Paid</span></p>
-            </div>
-            <div>
-              <p className="text-gray-600 font-medium">Match History and Statistics:</p>
-              <p className="text-gray-800"><span className="bg-green-600 px-2 py-1 rounded-md text-white">Paid</span></p>
-            </div>
-            <div className="text-gray-600 font-medium">
-              <p>More details will be added soon.</p>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
