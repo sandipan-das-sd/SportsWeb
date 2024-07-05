@@ -214,7 +214,7 @@ export default function UserDetails() {
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center space-x-4">
               <img src={user?.photo} alt="User Photo" className="w-12 h-12 rounded-full" />
-              <h2 className="text-xl font-semibold text-gray-800">{user?.fullname}</h2>
+              <h2 className="text-xl font-semibold text-gray-800">{user?.name}</h2>
             </div>
             <button className="text-gray-500 focus:outline-none" onClick={toggleSidebar}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
