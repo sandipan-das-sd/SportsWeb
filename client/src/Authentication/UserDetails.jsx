@@ -262,7 +262,7 @@ export default function UserDetails() {
       <div className="flex-1 min-w-0">
         <div className="bg-white p-6 shadow-lg">
           {/* Main content goes here */}
-          <div className="fixed top-0 left-0 w-full bg-yellow-500 text-center p-2">
+          <div className="fixed  w-full bg-yellow-500 text-center p-2">
         <p className="text-white font-semibold">This page is under construction. Please wait for updates.</p>
       </div>
           <h2 className="text-3xl font-semibold text-gray-800">User Dashboard</h2>
