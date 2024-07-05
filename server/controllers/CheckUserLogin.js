@@ -109,6 +109,9 @@ const userLogin = async (req, res) => {
     const tokenData = {
       id: user._id,
       email: user.email,
+      photo: user.photo,
+      mobile: user.mobile,
+      name:user.name
     };
 
     const token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
@@ -135,7 +138,9 @@ const userLogin = async (req, res) => {
           _id: user._id,
           name: user.name,
           email: user.email,
-          // Add other admin details as needed
+          photo:user.photo,
+          mobile:user.mobile
+          
         },
         isAdmin: true, // Indicate that this is an admin login
         success: true,

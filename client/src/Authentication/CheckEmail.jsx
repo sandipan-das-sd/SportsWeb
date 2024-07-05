@@ -214,6 +214,13 @@ export default function CheckEmail() {
         email: data.email,
         password: data.password
       }, { withCredentials: true });
+
+      // const response = await axios.post("http://localhost:5800/api/login", {
+      //   email: data.email,
+      //   password: data.password
+      // }, { withCredentials: true });
+
+
   
       console.log(response.data);
   
@@ -232,10 +239,12 @@ export default function CheckEmail() {
         
           navigate('/admin');
         } else {
-          console.log("Navigating to /details");
+          const userId = response.data.user._id; // Verify this field exists in the response
+          console.log("Navigating to /details with user ID:", userId);
+
          
           // Navigate to /details for regular users
-          navigate('/details');
+          navigate(`/details/${userId}`);
         }
       } else {
         toast.error(response.data.message || "An error occurred");

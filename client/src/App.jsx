@@ -319,7 +319,12 @@ const App = () => {
           return;
         }
 
-        const response = await axios.get("https://sports-web-server.vercel.app/api/user-details", {
+        // const response = await axios.get("https://sports-web-server.vercel.app/api/user-details", {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`
+        //   }
+
+        const response = await axios.get("http://localhost:5800/api/user-details", {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -377,7 +382,7 @@ const App = () => {
               <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
               <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/email" />} />
               <Route path="/email" element={<CheckEmail />} />
-              <Route path="/details" element={<UserDetails />} />
+              <Route path="/details/:id" element={<UserDetails />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>

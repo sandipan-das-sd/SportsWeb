@@ -50,6 +50,9 @@ const registerUser = async (req, res) => {
     const tokenData = {
       id: newUser._id,
       email: newUser.email,
+      photo: newUser.photo,
+      mobile: newUser.mobile,
+      name:newUser.name
     };
     const token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 

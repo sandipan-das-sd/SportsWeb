@@ -8,7 +8,9 @@ router.post('/register',UserRegistration)
 //Check Login Routes
 router.post('/login',CheckLogin);
 
-//get User detais
+//get User detais FROM TOKEN
 router.get('/user-details',getUserDetails)
+//get user details by id
+
 
 module.exports=router;

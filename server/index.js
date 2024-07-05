@@ -8,12 +8,19 @@ const router = require('./routes/routes');
 const PORT = process.env.PORT || 5800;
 dotenv.config();
 
-// Update CORS configuration
+
 app.use(cors({
     origin: "https://sports-client-nine.vercel.app", // explicitly allow your client origin
     methods: "PUT,PATCH,DELETE,GET,POST",
     credentials: true // allow credentials to be sent
 }));
+
+
+// app.use(cors({
+//     origin: "http://localhost:5173", // explicitly allow your client origin
+//     methods: "PUT,PATCH,DELETE,GET,POST",
+//     credentials: true // allow credentials to be sent
+// }));
 
 app.use(express.json());
 app.use(cookieParser());
