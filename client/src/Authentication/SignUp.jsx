@@ -17,7 +17,7 @@ export default function SignUp() {
     photo: null,
     photoUrl: ''
   });
-  const [photoUploadMessage, setPhotoUploadMessage] = useState('');
+  const [ setPhotoUploadMessage] = useState('');
   const fileInputRef = useRef(null);
 
   const handleChange = (e) => {

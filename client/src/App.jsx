@@ -393,7 +393,7 @@ const App = () => {
   );
 };
 
-const Layout = ({ children, isAdmin }) => {
+const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isCheckEmailRoute = location.pathname.startsWith('/email');
