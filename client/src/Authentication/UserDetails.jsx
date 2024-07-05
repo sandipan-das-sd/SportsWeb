@@ -25,13 +25,14 @@ export default function UserDetails() {
 
         const userData = response.data.data;
         setUser(userData);
+        console.log(userData)
 
         // Store user details in local storage
         localStorage.setItem('user', JSON.stringify(userData));
 
         // Store user details in cookies
         Cookies.set('user', JSON.stringify(userData), { expires: 7 });
-        
+
         // Redirect to admin if user is admin
         if (userData.isAdmin) {
           navigate('/admin');
@@ -74,12 +75,25 @@ export default function UserDetails() {
                 <label className="text-gray-600 font-medium">Email:</label>
                 <p className="text-gray-800">{user.email}</p>
               </div>
-              {/* Add more fields as needed */}
+              <div className="flex flex-col items-start">
+                <label className="text-gray-600 font-medium">Photo:</label>
+                <p className="text-gray-800">{user.photo}</p>
+              </div>
+
+              <div className="flex flex-col items-start">
+                <label className="text-gray-600 font-medium">Phone:</label>
+                <p className="text-gray-800">{user.phone}</p>
+              </div>
             </div>
           </div>
         ) : (
           <div className="mt-8 space-y-6">
-            <p>Loading user details...</p>
+            <button type="button" className="bg-indigo-500 ..." disabled>
+              <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
+
+              </svg>
+              loading...
+            </button>
           </div>
         )}
       </div>

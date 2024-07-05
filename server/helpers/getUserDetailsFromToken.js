@@ -32,11 +32,11 @@ async function getUserDetailsFromToken(token) {
     const user = {
       id: decoded.id,
       email: decoded.email,
-      token: token,  // Include the token itself
-      // Add other fields from the decoded token if available
-      // Example: 
+      token: token, 
       name: decoded.name,
       role: decoded.role,
+      photo:decoded.photo,
+      mobile:decoded.mobile
     };
 
     return user;
