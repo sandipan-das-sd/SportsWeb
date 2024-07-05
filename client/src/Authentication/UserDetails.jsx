@@ -260,7 +260,7 @@ export default function UserDetails() {
         <div className="bg-white p-6 shadow-lg">
           {/* Main content goes here */}
           <h2 className="text-3xl font-semibold text-gray-800">User Dashboard</h2>
-          <p className="mt-4 text-gray-600">Welcome to your dashboard, {user?.fullname}!</p>
+          <p className="mt-4 text-gray-600">Welcome to your dashboard, {user?.name}!</p>
           {/* Add more content as needed */}
         </div>
       </div>
