@@ -56,12 +56,13 @@ const PORT = process.env.PORT || 5800;
 
 // Middleware
 app.use(cors({
-    origin: "https://sports-client-nine.vercel.app", 
+    origin: "https://sports-client-nine.vercel.app", // Specify the exact origin of your client app
     methods: "PUT,PATCH,DELETE,GET,POST",
-    credentials: true 
+    credentials: true // Allow credentials
 }));
 
-app.options('*', cors());
+app.options('*', cors()); // Enable pre-flight across all routes
+
 app.use(express.json());
 app.use(cookieParser());
 
