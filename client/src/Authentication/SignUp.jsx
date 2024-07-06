@@ -63,7 +63,7 @@ export default function SignUp() {
     }
 
     try {
-      const response = await fetch('https://sports-web-server.vercel.app/api/register', {
+      const response = await fetch('/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
