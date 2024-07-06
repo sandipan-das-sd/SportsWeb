@@ -61,6 +61,7 @@ app.use(cors({
     credentials: true // allow credentials to be sent
 }));
 
+app.options('*', cors());
 app.use(express.json());
 app.use(cookieParser());
 
