@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const ConnectDB=async()=>{
 try {
-    const dbURL=process.env.MONGODB_URL
+    const dbURL="mongodb+srv://sandipanpyqplatform:ZyEDl4TUAuW9l9CR@tournamnet.p5f9ius.mongodb.net/?retryWrites=true&w=majority&appName=tournamnet"
     //if no DB url is not present in the env 
     if(!dbURL)
         {
