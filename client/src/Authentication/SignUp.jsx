@@ -19,7 +19,7 @@ export default function SignUp() {
     photoUrl: ''
   });
 
-  const [photoUploadMessage, setPhotoUploadMessage] = useState('');
+  const [ setPhotoUploadMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [mobileError, setMobileError] = useState('');
   const [passwordError, setPasswordError] = useState('');

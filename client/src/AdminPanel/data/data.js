@@ -3,13 +3,13 @@ import { personsImgs } from "../utils/images";
 
 export const navigationLinks = [
     { id: 1, title: 'Home', image: iconsImgs.home },
-    { id: 2, title: 'Budget', image: iconsImgs.budget },
+    { id: 2, title: 'Total Balance', image: iconsImgs.budget },
     { id: 3, title: 'Transactions', image: iconsImgs.plane },
     { id: 4, title: 'Subscriptions', image: iconsImgs.wallet },
-    { id: 5, title: 'Loans', image: iconsImgs.bills },
+    { id: 5, title: 'Excel Upload', image: iconsImgs.bills },
     { id: 6, title: 'Reports', image: iconsImgs.report },
     { id: 7, title: 'Savings', image: iconsImgs.wallet },
-    { id: 8, title: 'Financial Advice', image: iconsImgs.wealth },
+    { id: 8, title: 'Advice', image: iconsImgs.wealth },
     { id: 9, title: 'Account', image: iconsImgs.user },
     { id: 10, title: 'Settings', image: iconsImgs.gears }
 ];
@@ -71,36 +71,56 @@ export const reportData = [
     }
 ];
 
-export const budget = [
+// export const budget = [
+//     {
+//         id: 19, 
+//         title: "Subscriptions",
+//         type: "Automated",
+//         amount: 22000
+//     },
+//     {
+//         id: 20, 
+//         title: "Loan Payment",
+//         type: "Automated",
+//         amount: 16000
+//     },
+//     {
+//         id: 21, 
+//         title: "Foodstuff",
+//         type: "Automated",
+//         amount: 20000
+//     },
+//     {
+//         id: 22, 
+//         title: "Subscriptions",
+//         type: null,
+//         amount: 10000
+//     },
+//     {
+//         id: 23, 
+//         title: "Subscriptions",
+//         type: null,
+//         amount: 40000
+//     }
+// ];
+export const uploadHistory = [
     {
-        id: 19, 
-        title: "Subscriptions",
-        type: "Automated",
-        amount: 22000
+        id: 1,
+        fileName: "data1.xlsx",
+        uploadDate: "2024-07-01",
+        uploadTime: "10:30 AM"
     },
     {
-        id: 20, 
-        title: "Loan Payment",
-        type: "Automated",
-        amount: 16000
+        id: 2,
+        fileName: "data2.xlsx",
+        uploadDate: "2024-07-02",
+        uploadTime: "11:00 AM"
     },
     {
-        id: 21, 
-        title: "Foodstuff",
-        type: "Automated",
-        amount: 20000
-    },
-    {
-        id: 22, 
-        title: "Subscriptions",
-        type: null,
-        amount: 10000
-    },
-    {
-        id: 23, 
-        title: "Subscriptions",
-        type: null,
-        amount: 40000
+        id: 3,
+        fileName: "data3.xlsx",
+        uploadDate: "2024-07-03",
+        uploadTime: "09:45 AM"
     }
 ];
 

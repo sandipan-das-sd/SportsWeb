@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 function AdminApp() {
   useEffect(()=>{
-    toast.success("Admin panel will be Updating Soon!! Please Wait for Few Days")
+   
     toast.success("Welcome to Debtilok Mukherjee");   
   },[])
   return (
