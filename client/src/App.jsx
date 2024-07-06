@@ -297,6 +297,7 @@ import AdminApp from "./AdminPanel/AdminApp";
 import CheckEmail from "./Authentication/CheckEmail";
 import UserDetails from "./Authentication/UserDetails";
 import SignUp from "./Authentication/SignUp";
+import ForgotPassword from "./Authentication/ForgotPassword";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -384,9 +385,12 @@ const App = () => {
               <Route path="/email" element={<CheckEmail />} />
               <Route path="/details/:id" element={<UserDetails />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/forgot-password" element={<ForgotPassword/>} />
               <Route path="*" element={<Navigate to="/" />} />
+              
             </Routes>
           </Layout>
+          
         </div>
       </Router>
     </>

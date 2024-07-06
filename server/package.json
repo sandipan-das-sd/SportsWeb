@@ -24,6 +24,7 @@
     "moongose": "^1.0.0",
     "nodemailer": "^6.9.14",
     "nodemon": "^3.1.4",
+    "otp-generator": "^4.0.1",
     "password-hash-and-salt": "^0.1.4",
     "razorpay": "^2.9.4",
     "socket-io": "^1.0.0",

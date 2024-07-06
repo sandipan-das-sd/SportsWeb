@@ -157,7 +157,7 @@ export default function CheckEmail() {
               </div>
 
               <div className="text-sm">
-                <Link to="#" className="font-medium text-primary hover:text-blue-500">
+                <Link to="/forgot-password" className="font-medium text-primary hover:text-blue-500">
                   Forgot your password?
                 </Link>
               </div>
