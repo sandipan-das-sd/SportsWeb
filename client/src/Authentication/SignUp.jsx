@@ -3,7 +3,7 @@
 import  { useState, useRef } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate, Link } from 'react-router-dom';
-import uploadFiles from './../helpers/uploadFiles'; // Import your file upload function
+import uploadFiles from './../helpers/uploadFiles'; 
 
 export default function SignUp() {
   const navigate = useNavigate();
