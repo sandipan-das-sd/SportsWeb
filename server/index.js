@@ -61,7 +61,7 @@ app.use(cors({
     credentials: true // Allow credentials
 }));
 
-app.options('*', cors()); // Enable pre-flight across all routes
+ // Enable pre-flight across all routes
 
 app.use(express.json());
 app.use(cookieParser());
