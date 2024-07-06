@@ -69,24 +69,29 @@ app.get('/', (req, res) => {
     res.json({ message: "Congratulations, the server is running" });
 });
 
-// API Endpoints
-connectDB().then(() => {
-    app.use('/api', router);
-    app.get('/db-status', (req, res) => {
+// Database Status Endpoint
+app.get('/api/db-status', async (req, res) => {
+    try {
+        await connectDB(); // Check if DB connection is successful
         res.json({ message: "Database connected successfully" });
-    });
-}).catch(err => {
-    app.use('/api', (req, res) => {
+    } catch (err) {
         res.status(500).json({ message: "Database connection failed", error: err.message });
-    });
-    app.get('/db-status', (req, res) => {
-        res.status(500).json({ message: "Database connection failed", error: err.message });
-    });
+    }
 });
 
+// API Endpoints
+app.use('/api', router);
+
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is listening on ${PORT}`);
-});
+connectDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is listening on ${PORT}`);
+        });
+    })
+    .catch(err => {
+        console.error("Error connecting with the Database", err.message);
+        // If DB connection fails, we will not start the server, but we can still handle errors
+    });
 
 module.exports = app;
