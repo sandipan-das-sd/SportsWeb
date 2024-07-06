@@ -115,7 +115,8 @@ const PORT = process.env.PORT || 5800;
 const corsOptions = {
   origin: 'https://sports-client-nine.vercel.app', // Replace with your actual origin
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'], // Include Authorization header
+ 
   credentials: true,
 };
 
