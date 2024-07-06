@@ -70,13 +70,14 @@ const registerUser = async (req, res) => {
       success: true,
     });
 
-  } catch (error) {
+  }  catch (error) {
     console.error("Error during registration:", error);
     return res.status(500).json({
       error: true,
-      message: 'An error occurred during registration',
+      message: 'An error occurred during registration'
     });
   }
+  
 };
 
 module.exports = registerUser;
