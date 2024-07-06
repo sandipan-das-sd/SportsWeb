@@ -113,7 +113,7 @@ const PORT = process.env.PORT || 5800;
 
 // Middleware
 const corsOptions = {
-  origin: 'https://sports-client-nine.vercel.app', // Replace with your actual origin
+  origin: 'http://localhost:5173', // Replace with your actual origin
   methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'], // Include Authorization header
  

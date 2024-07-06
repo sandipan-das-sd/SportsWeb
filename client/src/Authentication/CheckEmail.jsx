@@ -23,9 +23,13 @@ export default function CheckEmail() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
-        email: data.email,
-        password: data.password
+      // const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
+      //   email: data.email,
+      //   password: data.password
+
+      const response = await axios.post("http://localhost:5800/api/login", {
+          email: data.email,
+          password: data.password
       }, { withCredentials: true });
 
       // const response = await axios.post("http://localhost:5800/api/login", {

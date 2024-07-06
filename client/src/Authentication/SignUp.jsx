@@ -63,18 +63,18 @@ export default function SignUp() {
     }
 
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-
-      // const response = await fetch('http://localhost:5800/api/register', {
+      // const response = await fetch('https://sports-web-server.vercel.app/api/register', {
       //   method: 'POST',
       //   headers: {
       //     'Content-Type': 'application/json'
       //   },
+
+
+      const response = await fetch('http://localhost:5800/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,

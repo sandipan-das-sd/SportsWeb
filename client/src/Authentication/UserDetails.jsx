@@ -162,7 +162,7 @@ export default function UserDetails() {
           return;
         }
 
-        const response = await axios.get("https://sports-web-server.vercel.app/api/user-details", {
+        const response = await axios.get("http://localhost:5800/api/user-details", {
           headers: {
             Authorization: `Bearer ${token}`
           }

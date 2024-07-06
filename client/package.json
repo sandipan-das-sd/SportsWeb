@@ -1,7 +1,7 @@
 {
   "name": "client",
   "private": true,
-  "proxy":"https://sports-web-server.vercel.app",
+  "proxy":"http://localhost:5173",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
