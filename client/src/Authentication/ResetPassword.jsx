@@ -29,22 +29,24 @@ const ResetPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
       const response = await axios.post('http://localhost:5800/api/verify-otp', { otp, password });
       if (response.data.code === 200) {
         toast.success('Password updated successfully.');
         navigate('/email');
       } else {
-        toast.error(response.data.message);
+        toast.error(response.data.message || 'Failed to update password. Please try again.');
       }
     } catch (error) {
       console.error('Error updating password:', error);
-      toast.error('Failed to update password. Please try again.');
+      const errorMessage = error.response?.data?.message || 'Failed to update password. Please try again.';
+      toast.error(errorMessage);
     }
-
+  
     setLoading(false);
   };
+  
 
   return (
     <>

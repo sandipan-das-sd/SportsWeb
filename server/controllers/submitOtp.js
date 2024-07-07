@@ -7,8 +7,8 @@ const UserModel = require('../ConnectDB/Model/Registration');
 const submitOtp = async (req, res) => {
     try {
         console.log(req.body);
-        const { email, token } = req.params;
-        const { otp, password } = req.body;
+      
+        const { email,otp, password } = req.body;
 
         if (!otp || !password) {
             return res.status(400).send({ code: 400, message: 'OTP and password are required' });
