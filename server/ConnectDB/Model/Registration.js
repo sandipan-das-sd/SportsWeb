@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema({
   photo: {
     type: String, // Store the path or URL to the photo
     default: '' // Optional default value if no photo provided
+  },
+otp: {
+    type: Number, // Store the path or URL to the photo
+    default: '' // Optional default value if no photo provided
   }
 });
 
