@@ -20,24 +20,65 @@ export default function CheckEmail() {
     }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     // const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
+  //     //   email: data.email,
+  //     //   password: data.password
+
+  //     const response = await axios.post("http://localhost:5800/api/login", {
+  //         email: data.email,
+  //         password: data.password
+  //     }, { withCredentials: true });
+
+  //     // const response = await axios.post("http://localhost:5800/api/login", {
+  //     //   email: data.email,
+  //     //   password: data.password
+  //     // }, { withCredentials: true });
+
+
+  
+  //     console.log(response.data);
+  
+  //     if (response.data.success) {
+  //       // Save token to localStorage
+  //       localStorage.setItem('token', response.data.token);
+  
+  //       // Show success message using toast
+  //       toast.success(response.data.message);
+  
+  //       // Redirect based on user type
+  //       if (response.data.admin && response.data.admin.email === "debadmin@gmail.com") {
+  //         console.log("Navigating to /admin");
+         
+  //         // Navigate to /admin if the user is an admin
+        
+  //         navigate('/admin');
+  //       } else {
+  //         const userId = response.data.user._id; // Verify this field exists in the response
+  //         console.log("Navigating to /details with user ID:", userId);
+
+         
+  //         // Navigate to /details for regular users
+  //         navigate(`/details/${userId}`);
+  //       }
+  //     } else {
+  //       toast.error(response.data.message || "An error occurred");
+  //     }
+  //   } catch (error) {
+  //     // Handle errors here
+  //     toast.error(error.response?.data?.message || "An error occurred");
+  //     console.error("There was an error!", error);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const response = await axios.post("https://sports-web-server.vercel.app/api/login", {
-      //   email: data.email,
-      //   password: data.password
-
       const response = await axios.post("http://localhost:5800/api/login", {
-          email: data.email,
-          password: data.password
+        email: data.email,
+        password: data.password
       }, { withCredentials: true });
-
-      // const response = await axios.post("http://localhost:5800/api/login", {
-      //   email: data.email,
-      //   password: data.password
-      // }, { withCredentials: true });
-
-
   
       console.log(response.data);
   
@@ -51,17 +92,17 @@ export default function CheckEmail() {
         // Redirect based on user type
         if (response.data.admin && response.data.admin.email === "debadmin@gmail.com") {
           console.log("Navigating to /admin");
-         
-          // Navigate to /admin if the user is an admin
-        
-          navigate('/admin');
-        } else {
-          const userId = response.data.user._id; // Verify this field exists in the response
+          
+          // Delay navigation to ensure the state is updated
+          setTimeout(() => navigate('/admin'), 1000);
+        } else if (response.data.user && response.data.user._id) {
+          const userId = response.data.user._id;
           console.log("Navigating to /details with user ID:", userId);
-
-         
-          // Navigate to /details for regular users
-          navigate(`/details/${userId}`);
+  
+          // Delay navigation to ensure the state is updated
+          setTimeout(() => navigate(`/details/${userId}`), 1000);
+        } else {
+          toast.error("Invalid response from server");
         }
       } else {
         toast.error(response.data.message || "An error occurred");
