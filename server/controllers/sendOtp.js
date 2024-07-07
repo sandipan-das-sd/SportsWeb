@@ -1,9 +1,10 @@
-
+const jwt=require('jsonwebtoken')
 const nodemailer = require('nodemailer');
 const UserModel = require('../ConnectDB/Model/Registration');
 
 const sendOtp = async (req, res) => {
     try {
+        
         console.log(req.body);
         const _otp = Math.floor(100000 + Math.random() * 900000);
         console.log(_otp);
@@ -14,6 +15,12 @@ const sendOtp = async (req, res) => {
         }
 
         const userName = user.name; 
+         // Generate JWT token
+         const token = jwt.sign({ email: req.body.email }, process.env.JWT_SECRET_KEY, { expiresIn: '10m' });
+         console.log("Generated Token:", token);
+         // Update user with OTP and token
+         await UserModel.updateOne({ email: req.body.email }, { otp: _otp, token: token });
+ 
 
         let transporter = nodemailer.createTransport({
             service: 'gmail',

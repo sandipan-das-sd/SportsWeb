@@ -38,6 +38,10 @@ otp: {
   passwordUpdatedAt: {
     type: Date, // Store the date and time of the password update
     default: Date.now // Set the default value to the current date and time
+  },
+  token:{
+    type:String,
+    default:""
   }
 });
 

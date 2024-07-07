@@ -19,6 +19,7 @@ const ForgotPassword = () => {
       const response = await axios.post('http://localhost:5800/api/generate-otp', { email });
       if (response.data.code === 200) {
         toast.success('OTP sent successfully. Check your email.');
+       
         navigate(`/forgot-password/verify/${email}`);
       } else {
         toast.error(response.data.message);

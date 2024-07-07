@@ -44,6 +44,8 @@ router.post('/generate-otp', sendOtp);
 router.post('/verify-otp', submitOtp);
 
 
+
+
 //resend otp
 
 
