@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema({
 otp: {
     type: Number, // Store the path or URL to the photo
     default: '' // Optional default value if no photo provided
+  },
+  passwordUpdatedAt: {
+    type: Date, // Store the date and time of the password update
+    default: Date.now // Set the default value to the current date and time
   }
 });
 

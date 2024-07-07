@@ -26,7 +26,7 @@ const sendOtp = async (req, res) => {
         let info = await transporter.sendMail({
             from: '"Terrace Cup Team" <sd901656@gmail.com>',
             to: req.body.email,
-            subject: "Password Reset OTPm from Terrace Cup Team ",
+            subject: "Password Reset OTP from Terrace Cup Team ",
             text: `Your OTP for password reset is: ${_otp}`,
             html: `<html>
                     <head>

@@ -22,7 +22,20 @@ const submitOtp = async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        await UserModel.updateOne({ email: user.email }, { password: hashedPassword, otp: null });
+        await UserModel.updateOne({ email: user.email }, { password: hashedPassword,passwordUpdatedAt: Date.now(), otp: null });
+        const dateOptions = {
+            timeZone: 'Asia/Kolkata',
+            hour12: true,
+            hour: 'numeric',
+            minute: 'numeric',
+            second: 'numeric',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        };
+
+        const formattedDate = new Date().toLocaleString('en-IN', dateOptions);
+
 
         // Send confirmation email
         let transporter = nodemailer.createTransport({
@@ -98,6 +111,7 @@ const submitOtp = async (req, res) => {
                             <p>Hello ${user.name},</p>
                             <p class="success-message">Your password has been updated successfully.</p>
                             <p class="password-info">Your new password is: <strong>${password}</strong></p>
+                            <p>Password updated at: <strong>${formattedDate}</strong> (Kolkata Time)</p>
                             <p>If you did not request this change, please contact our support team immediately.</p>
                             <p>Thank you,<br/>Terrace Cup Team</p>
                             <p class="company">Terrace Cup - Your Trusted Tournament Partner</p>
@@ -114,3 +128,5 @@ const submitOtp = async (req, res) => {
 };
 
 module.exports = submitOtp;
+
+
