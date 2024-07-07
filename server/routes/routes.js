@@ -43,4 +43,9 @@ router.post('/generate-otp', sendOtp);
 // Verify OTP and reset password
 router.post('/verify-otp', submitOtp);
 
+
+//resend otp
+
+
+
 module.exports = router;

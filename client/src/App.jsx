@@ -290,7 +290,7 @@ import BrandsLogo from "./components/BrandsLogo/BrandsLogo";
 import Services from "./components/Services/Services";
 import Testimonial from "./components/Testimonial/Testimonial";
 import BlogsComp from "./components/Blogs/BlogsComp";
-import Footer from "./components/Footer/Footer";
+
 import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
@@ -298,6 +298,7 @@ import CheckEmail from "./Authentication/CheckEmail";
 import UserDetails from "./Authentication/UserDetails";
 import SignUp from "./Authentication/SignUp";
 import ForgotPassword from "./Authentication/ForgotPassword";
+import ResetPassword from "./Authentication/ResetPassword";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -386,6 +387,8 @@ const App = () => {
               <Route path="/details/:id" element={<UserDetails />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword/>} />
+            
+              <Route path="/forgot-password/verify/:email" element={<ResetPassword />} />
               <Route path="*" element={<Navigate to="/" />} />
               
             </Routes>
@@ -409,7 +412,7 @@ const Layout = ({ children }) => {
     <>
       {!isAdminRoute && !isCheckEmailRoute && <Navbar />}
       {children}
-      {!isAdminRoute && !isCheckEmailRoute && <Footer />}
+     
     </>
   );
 };
