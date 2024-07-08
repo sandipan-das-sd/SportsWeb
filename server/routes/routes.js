@@ -8,7 +8,7 @@ const sendOtp = require('../Auth controllers/sendOtp');
 const submitOtp = require('../Auth controllers/submitOtp');
 const getUserDetailsFromId=require('../Auth controllers/GetUserDetails')
 const NewmatchCreate = require('../Match Controller/NewMatch');
-
+const AddPayment=require('../Payment Controller/PaymentController')
 
 
 
@@ -36,6 +36,9 @@ router.get('/user-detailsid', getUserDetailsFromId);
 
 // Route to create a new match
 router.post('/create-matches', NewmatchCreate);
+
+//create Payment
+router.post('/add-payment', AddPayment)
 
 
 
