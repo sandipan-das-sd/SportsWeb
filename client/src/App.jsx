@@ -352,6 +352,7 @@ const App = () => {
         } else {
           // Handle other errors
           toast.error("An error occurred. Please try again.");
+          toast.error("IP Not Conncted!! Website live failed" );
           setLoading(false);
         }
       }
