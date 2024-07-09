@@ -295,7 +295,7 @@ import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
 import CheckEmail from "./Authentication/CheckEmail";
-import UserDetails from "./Authentication/UserDetails";
+import UserAdmin from "./UserDashBoard/App"
 import SignUp from "./Authentication/SignUp";
 import ForgotPassword from "./Authentication/ForgotPassword";
 import ResetPassword from "./Authentication/ResetPassword";
@@ -385,7 +385,7 @@ const App = () => {
               <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
               <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/email" />} />
               <Route path="/email" element={<CheckEmail />} />
-              <Route path="/details/:id" element={<UserDetails />} />
+              <Route path="/details" element={<UserAdmin />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword/>} />
             
@@ -404,19 +404,25 @@ const App = () => {
 
 
 
+
+
+
 const Layout = ({ children }) => {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isCheckEmailRoute = location.pathname.startsWith('/email');
+  const isUserDetails = location.pathname.startsWith('/dashboard');
+  const isDetailsRoute = location.pathname.startsWith('/details');
 
   return (
     <>
-      {!isAdminRoute && !isCheckEmailRoute && <Navbar />}
+      {!isAdminRoute && !isCheckEmailRoute && !isUserDetails && !isDetailsRoute && <Navbar />}
       {children}
-     
     </>
   );
 };
+
+
 
 Layout.propTypes = {
   children: PropTypes.node,
