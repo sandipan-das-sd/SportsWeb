@@ -122,6 +122,79 @@
 // };
 
 
+// const path = require('path');
+// const fs = require('fs');
+// const csv = require('fast-csv');
+// const mongoose = require('mongoose');
+
+// // Function to generate a dynamic collection name
+// const generateCollectionName = () => {
+//     const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+//     const date = new Date();
+//     const dayName = daysOfWeek[date.getDay()];
+
+//     let hours = date.getHours();
+//     const minutes = date.getMinutes().toString().padStart(2, '0');
+//     const period = hours >= 12 ? 'PM' : 'AM';
+
+//     hours = hours % 12 || 12; // Convert to 12-hour format
+
+//     const timeString = `${hours}:${minutes} ${period}`;
+
+//     return `${dayName} MatchDetails ${timeString}`;
+// };
+
+// console.log(generateCollectionName());
+
+// exports.create = async (req, res) => {
+//     console.log(req.file); // Ensure req.file contains the uploaded file information
+
+//     const totalRecords = [];
+//     const collectionName = generateCollectionName(); // Generate a dynamic collection name
+
+//     try {
+//         // Define a new Mongoose model with the dynamic collection name
+//         const DynamicMatchDetailsSchema = new mongoose.Schema({}, { strict: false });
+//         const DynamicMatchDetails = mongoose.model(collectionName, DynamicMatchDetailsSchema);
+
+//         // Adjust the path to match your directory structure and file storage
+//         const filePath = path.join(__dirname, '../', 'public', 'csv', req.file.filename);
+
+//         // Read the CSV file and parse its content
+//         fs.createReadStream(filePath)
+//             .pipe(csv.parse({ headers: true })) // Enable headers to dynamically extract headers
+//             .on('error', error => {
+//                 console.error('Error parsing CSV:', error);
+//                 res.status(500).json({ error: 'Error parsing CSV file' });
+//             })
+//             .on('data', row => {
+//                 const headers = Object.keys(row); // Extract headers from the first row
+//                 const cleanedRow = {};
+//                 headers.forEach(header => {
+//                     cleanedRow[header] = row[header] ? row[header].trim() : null;
+//                 });
+//                 totalRecords.push(cleanedRow); // Collect cleaned rows for batch insertion
+//             })
+//             .on('end', async rowCount => {
+//                 console.log(`${rowCount} rows parsed successfully`);
+
+//                 try {
+//                     // Insert all records into the dynamically named collection using Mongoose
+//                     const insertedRecords = await DynamicMatchDetails.insertMany(totalRecords);
+
+//                     // Respond with the inserted records or any other success message
+//                     console.log(`Inserted ${insertedRecords.length} records into collection: ${collectionName}`);
+//                     res.json({ insertedCount: insertedRecords.length, records: insertedRecords });
+//                 } catch (err) {
+//                     console.error('Error inserting records:', err);
+//                     res.status(500).json({ error: 'Error inserting records into database' });
+//                 }
+//             });
+//     } catch (error) {
+//         console.error('Error processing file upload:', error);
+//         res.status(500).json({ error: 'Error processing file upload' });
+//     }
+// };
 const path = require('path');
 const fs = require('fs');
 const csv = require('fast-csv');
