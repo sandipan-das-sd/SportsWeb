@@ -1,6 +1,7 @@
 
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const UserRegistration = require('../Auth controllers/RegistrationController');
 const CheckLogin = require('../Auth controllers/CheckUserLogin');
 const getUserDetails = require('../Auth controllers/userDetails');
@@ -9,9 +10,9 @@ const submitOtp = require('../Auth controllers/submitOtp');
 const getUserDetailsFromId=require('../Auth controllers/GetUserDetails')
 const NewmatchCreate = require('../Match Controller/NewMatch');
 const AddPayment=require('../Payment Controller/PaymentController')
+const CsVtoJson = require("./../Match Controller/ExcelDataFetched");
 
-
-
+const upload = multer({ dest: 'uploads/' });
 // Registration
 router.post('/register', UserRegistration);
 
@@ -40,6 +41,7 @@ router.post('/create-matches', NewmatchCreate);
 //create Payment
 router.post('/add-payment', AddPayment)
 
-
+//Match Excel data to JSON
+router.post('/upload-csv', upload.single('file') ,CsVtoJson.uploadAndProcessCsv)
 
 module.exports = router;

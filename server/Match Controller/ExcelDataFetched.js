@@ -1,67 +1,64 @@
-// // const express = require('express');
-// const mongoose = require('mongoose');
-// const csvjson = require('csvjson');
-// const { Schema } = mongoose;
-// const app = express();
-// const bodyParser = require('body-parser');
-// const fileUpload = require('express-fileupload');
+const path = require('path');
+const fs = require('fs');
+const csvjson = require('csvjson');
+const MatchDetails = require('./../ConnectDB/Model/MatchDetails'); // Adjust path as needed
 
-// // Define your MongoDB schema
-// const MatchDetailsSchema = new Schema({}, { strict: false });
-// const MatchDetails = mongoose.model('MatchDetails', MatchDetailsSchema);
+const uploadAndProcessCsv = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded.' });
+        }
 
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-// app.use(fileUpload());
+        // Access the uploaded file
+        const uploadedFile = req.file;
+        console.log('Uploaded File:', JSON.stringify(uploadedFile, null, 2));
 
-// app.post('/upload', async (req, res) => {
-//     try {
-//         if (!req.files || Object.keys(req.files).length === 0) {
-//             return res.status(400).send('No files were uploaded.');
-//         }
+        // Form the correct file path
+        const csvFilePath = path.resolve(__dirname, '..', 'uploads', uploadedFile.filename);
+        console.log('CSV File Path:', csvFilePath);
 
-//         // Access the file
-//         let uploadedFile = req.files.file;
+        // Verify if the file exists at the path
+        if (!fs.existsSync(csvFilePath)) {
+            throw new Error(`File not found at path: ${csvFilePath}`);
+        }
 
-//         // Upload the file to Cloudinary
-//         const result = await cloudinary.uploader.upload(uploadedFile.tempFilePath, { resource_type: 'raw' });
+        // Read the CSV file
+        const csvData = fs.readFileSync(csvFilePath, { encoding: 'utf-8' });
+        console.log('CSV Data:', csvData);
 
-//         // Read the CSV file from Cloudinary URL
-//         const response = await fetch(result.secure_url);
-//         const csvData = await response.text();
-//         const jsonArray = csvjson.toObject(csvData);
+        // Convert CSV to JSON
+        const jsonArray = csvjson.toObject(csvData);
+        console.log('Parsed JSON Array:', jsonArray);
 
-//         // Update MongoDB with new data
-//         const bulkOps = jsonArray.map(data => {
-//             return {
-//                 updateOne: {
-//                     filter: { _id: data._id }, // Assuming _id is the unique identifier
-//                     update: { $set: data },
-//                     upsert: true
-//                 }
-//             };
-//         });
+        // Update MongoDB with new data
+        const bulkOps = jsonArray.map(data => ({
+            updateOne: {
+                filter: { _id: data._id }, // Assuming _id is the unique identifier
+                update: { $set: data }, // Update all fields from the JSON object
+                upsert: true
+            }
+        }));
 
-//         await MatchDetails.bulkWrite(bulkOps);
+        const bulkWriteResult = await MatchDetails.bulkWrite(bulkOps);
 
-//         res.status(200).json({
-//             message: 'File uploaded and data updated successfully',
-//             cloudinary_url: result.secure_url
-//         });
+        // Delete uploaded file after processing
+        fs.unlinkSync(csvFilePath);
 
-//     } catch (error) {
-//         console.error(error);
-//         res.status(500).json({ error: 'An error occurred' });
-//     }
-// });
+        // Respond with JSON
+        res.status(200).json({
+            message: 'File uploaded and data updated successfully',
+            filename: uploadedFile.originalname,
+            result: bulkWriteResult,
+            parsedData: jsonArray // Include parsed data in response
+        });
+    } catch (error) {
+        console.error('Error occurred:', error);
+        res.status(500).json({
+            error: 'An error occurred',
+            errorDetails: error.message
+        });
+    }
+};
 
-// // Connect to MongoDB and start the server
-// mongoose.connect('mongodb://localhost:27017/your_database', { useNewUrlParser: true, useUnifiedTopology: true })
-//     .then(() => {
-//         app.listen(3000, () => {
-//             console.log('Server is running on port 3000');
-//         });
-//     })
-//     .catch(err => {
-//         console.error('Database connection error', err);
-//     });
+// Export the function
+module.exports = { uploadAndProcessCsv };
