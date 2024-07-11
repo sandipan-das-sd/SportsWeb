@@ -36,7 +36,7 @@ const upload = multer({
     fileFilter: function (req, file, cb) {
         var ext = path.extname(file.originalname);
 
-        if (ext !== ".csv") {
+        if (ext !== ".csv" && ext !== ".xlsx" && ext !== ".pdf") {
             return cb(new Error("Only csvs are allowed!"));
         }
 
