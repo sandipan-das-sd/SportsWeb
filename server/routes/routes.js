@@ -73,6 +73,6 @@ router.post('/create-matches', NewmatchCreate);
 router.post('/add-payment', AddPayment)
 
 //Match Excel data to JSON
-router.post('/upload-csv', upload.single('csvFile') ,CsVtoJson.create)
+router.post('/upload-csv', upload.single('csvFile'), CsVtoJson.create)
 
 module.exports = router;
