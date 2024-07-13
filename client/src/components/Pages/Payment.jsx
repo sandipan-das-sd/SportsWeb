@@ -1,7 +1,7 @@
 import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Payment.css'
-import uploadFiles from '../../helpers/uploadFiles'; // Adjust the path to your file upload helper
+import uploadFiles from '../../helpers/uploadFiles'; 
 
 
 
