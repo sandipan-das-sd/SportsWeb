@@ -23,6 +23,11 @@ const paymentSchema = new mongoose.Schema({
     paymentDate: {
         type: Date,
         default: Date.now
+    },
+    paymentProof: {
+        type: String,
+        default: "",
+        required:true
     }
 }, {
     timestamps: true // Adds createdAt and updatedAt fields

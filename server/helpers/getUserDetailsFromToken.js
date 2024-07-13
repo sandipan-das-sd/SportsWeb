@@ -38,6 +38,7 @@ async function getUserDetailsFromToken(token) {
       photo:decoded.photo,
       mobile:decoded.mobile
     };
+    console.log(user)
 
     return user;
   } catch (error) {

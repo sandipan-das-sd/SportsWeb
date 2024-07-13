@@ -360,8 +360,8 @@ export default function CheckEmail() {
           console.log("Navigating to /details with user ID:", userId);
 
           // Delay navigation to ensure the state is updated
-          // setTimeout(() => navigate(`/details/${userId}`), 1000);
-          setTimeout(() => navigate("/details"), 1000);
+          setTimeout(() => navigate(`/details/${userId}`), 1000);
+          // setTimeout(() => navigate("/details"), 1000);
         } else {
           toast.error("Invalid response from server");
         }

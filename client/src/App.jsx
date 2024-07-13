@@ -295,11 +295,13 @@ import UpcomingMatches from "./components/Upcoming Matches/UpcomingMatches";
 import UpcomingModal from "./components/Upcoming Matches/UpcomingModal";
 import AdminApp from "./AdminPanel/AdminApp";
 import CheckEmail from "./Authentication/CheckEmail";
-import UserAdmin from "./UserDashBoard/App"
+
 import SignUp from "./Authentication/SignUp";
 import ForgotPassword from "./Authentication/ForgotPassword";
 import ResetPassword from "./Authentication/ResetPassword";
-
+import ExcelDataFormat from "./Authentication/ExcelDataFormat";
+import PaymentPages from "./components/Pages/Payment";
+import UserDetails from "./Authentication/UserDetails";
 const App = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -385,11 +387,12 @@ const App = () => {
               <Route path="/upcoming-matches" element={<UpcomingMatchesPage />} />
               <Route path="/admin" element={isAdmin ? <AdminApp /> : <Navigate to="/email" />} />
               <Route path="/email" element={<CheckEmail />} />
-              <Route path="/details" element={<UserAdmin />} />
+              <Route path="/details/:id" element={<UserDetails />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/forgot-password" element={<ForgotPassword/>} />
-            
+              <Route path="/excel" element={<ExcelDataFormat/>} />
               <Route path="/forgot-password/verify/:email" element={<ResetPassword />} />
+              <Route path="/payment/:id" element={<PaymentPages/>}/>
               <Route path="*" element={<Navigate to="/" />} />
               
             </Routes>

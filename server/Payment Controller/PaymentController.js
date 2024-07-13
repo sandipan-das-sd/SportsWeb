@@ -3,14 +3,15 @@ const PaymentModel = require("../ConnectDB/Model/Payment");
 const paymentController = async (req, res) => {
     try {
         // Destructure the required fields from req.body
-        const { amount, description, transactionId } = req.body;
+        const { amount, description, transactionId, paymentProof } = req.body;
 
         // Create a new payment instance with the destructured fields and the payer as the logged-in user
         const paymentDetails = new PaymentModel({
             amount,
             payer: req.user._id,
             description,
-            transactionId
+            transactionId,
+            paymentProof :"",
         });
 
         // Save the payment details to the database
