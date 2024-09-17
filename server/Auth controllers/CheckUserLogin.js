@@ -181,6 +181,9 @@ const jwt = require('jsonwebtoken');
 const bcryptjs = require('bcryptjs');
 const RegistrationModel = require('../ConnectDB/Model/Registration');
 
+
+// Assume we have a global variable or a better storage mechanism to store the token
+let storedToken = null;
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -225,6 +228,8 @@ const userLogin = async (req, res) => {
     };
 
     const token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
+// Store the token
+storedToken = token;
 
     const cookieOptions = {
       httpOnly: true,
@@ -282,4 +287,4 @@ const userLogin = async (req, res) => {
   }
 };
 
-module.exports = userLogin;
+module.exports = { userLogin, storedToken };

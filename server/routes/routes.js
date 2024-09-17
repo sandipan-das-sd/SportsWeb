@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require('multer');
 const fs=require('fs')
 const UserRegistration = require('../Auth controllers/RegistrationController');
-const CheckLogin = require('../Auth controllers/CheckUserLogin');
+const { userLogin } = require('../Auth controllers/CheckUserLogin');
 const getUserDetails = require('../Auth controllers/userDetails');
 const sendOtp = require('../Auth controllers/sendOtp');
 const submitOtp = require('../Auth controllers/submitOtp');
@@ -13,7 +13,7 @@ const NewmatchCreate = require('../Match Controller/NewMatch');
 const AddPayment=require('../Payment Controller/PaymentController')
 const CsVtoJson = require("./../Match Controller/ExcelDataFetched");
 const path = require("path");
-
+const GetAllMatches=require('../Match Controller/GetAllMatches')
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         if (!fs.existsSync("public")) {
@@ -48,7 +48,7 @@ const upload = multer({
 router.post('/register', UserRegistration);
 
 // Check Login Routes
-router.post('/login', CheckLogin);
+router.post('/login', userLogin);
 
 // Get User details FROM TOKEN
 router.get('/user-details', getUserDetails);
@@ -68,7 +68,9 @@ router.get('/user-detailsid', getUserDetailsFromId);
 
 // Route to create a new match
 router.post('/create-matches', NewmatchCreate);
-
+ 
+//Router t0o get all matches
+router.get('/get-matches',GetAllMatches)
 //create Payment
 router.post('/add-payment', AddPayment)
 
